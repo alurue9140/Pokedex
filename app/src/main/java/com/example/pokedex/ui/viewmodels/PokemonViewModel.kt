@@ -5,9 +5,13 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.pokedex.data.repositories.PokemonDeserializer
 import com.example.pokedex.data.models.Pokemon
 import com.google.gson.GsonBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 
 class PokemonViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,13 +22,24 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
     private val context = getApplication<Application>().applicationContext
 
     init {
-        _pokemon.value = loadPokemon("goodra")
+        loadPokemon("lucario")
     }
 
-    private fun loadPokemon(pokemonName: String): Pokemon {
-        val jsonTexto = getJsonData(context, "${pokemonName.lowercase()}.json")
-        val gSon = GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).create()
-        return gSon.fromJson(jsonTexto, Pokemon::class.java)
+    private fun loadPokemon(pokemonName: String){
+
+        viewModelScope.launch {
+
+            val loadedPokemon = withContext(Dispatchers.IO) {
+
+                val jsonTexto = getJsonData(context, "${pokemonName.lowercase()}.json")
+                val gSon = GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).create()
+
+                gSon.fromJson(jsonTexto, Pokemon::class.java)
+            }
+
+            _pokemon.postValue(loadedPokemon)
+
+        }
     }
 
     private fun getJsonData(context: Context, fileName: String): String? {

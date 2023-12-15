@@ -72,4 +72,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
     implementation ("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
 }

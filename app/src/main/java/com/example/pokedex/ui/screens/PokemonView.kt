@@ -26,37 +26,38 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonView (pokemonViewModel: PokemonViewModel) {
-
-    val pokemon by pokemonViewModel.pokemon.observeAsState(Pokemon())
+fun PokemonView(pokemonViewModel: PokemonViewModel) {
+    val pokemon by pokemonViewModel.pokemon.observeAsState()
 
     val systemUiController = rememberSystemUiController()
 
-    systemUiController.setStatusBarColor(pokemon.firstType?.color ?: MaterialTheme.colorScheme.background)
+    systemUiController.setStatusBarColor(pokemon?.firstType?.color ?: MaterialTheme.colorScheme.background)
 
-    Scaffold (
+    Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { ComponentTopAppBar(pokemon.firstType!!.color, pokemon.id) }
+        topBar = {
+            pokemon?.let { ComponentTopAppBar(it.firstType!!.color, it.id) }
+        }
     ) {
-        Column (horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-
-            ComponentHeader(pokemon.firstType!!.color, pokemon.imgStr)
-
-            ComponentName(pokemon.name)
-
-            ComponentType(pokemon.firstType!!, pokemon.secondType)
-
-            ComponentWeightHeight(pokemon.weight, pokemon.height)
-
-            ComponentTitle("Base Stats")
-
-            ComponentStatsCircular(pokemon.stats.hp, pokemon.stats.atk, pokemon.stats.def, pokemon.stats.specialAttack, pokemon.stats.specialDefense ,pokemon.stats.spd)
-
+        pokemon?.let {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                ComponentHeader(it.firstType!!.color, it.imgStr)
+                ComponentName(it.name)
+                ComponentType(it.firstType!!, it.secondType)
+                ComponentWeightHeight(it.weight, it.height)
+                ComponentTitle("Base Stats")
+                ComponentStatsCircular(
+                    it.stats.hp,
+                    it.stats.atk,
+                    it.stats.def,
+                    it.stats.specialAttack,
+                    it.stats.specialDefense,
+                    it.stats.spd
+                )
+            }
         }
     }
-
-
-
-
-
 }
