@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedex.data.models.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 
 @Composable
 fun ComponentWeightHeight(pokemon: Pokemon) {

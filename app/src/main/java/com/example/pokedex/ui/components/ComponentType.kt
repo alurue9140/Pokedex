@@ -13,8 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.pokedex.data.models.Pokemon
-import com.example.pokedex.data.models.PokemonType
+import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.domain.models.PokemonType
 
 @Composable
 fun ComponentType(pokemon: Pokemon) {

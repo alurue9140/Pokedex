@@ -23,7 +23,7 @@ import coil.decode.ImageDecoderDecoder
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.example.pokedex.R
-import com.example.pokedex.data.models.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject

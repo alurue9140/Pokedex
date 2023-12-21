@@ -1,4 +1,4 @@
-package com.example.pokedex.data.models
+package com.example.pokedex.domain.models
 
 import com.google.gson.annotations.SerializedName
 import dagger.hilt.android.scopes.ActivityScoped

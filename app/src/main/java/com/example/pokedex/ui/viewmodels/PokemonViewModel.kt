@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.data.models.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.data.repositories.PokemonFromJsonRetriever
 import com.example.pokedex.data.repositories.PokemonRetriever
 import dagger.hilt.android.lifecycle.HiltViewModel

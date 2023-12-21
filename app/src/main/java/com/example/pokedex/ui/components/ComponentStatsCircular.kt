@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.pokedex.data.models.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.ui.theme.ATK
 import com.example.pokedex.ui.theme.DEF
 import com.example.pokedex.ui.theme.HP
