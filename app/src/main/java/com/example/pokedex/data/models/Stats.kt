@@ -1,8 +1,11 @@
 package com.example.pokedex.data.models
 
 import com.google.gson.annotations.SerializedName
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
-class Stats(
+@ActivityScoped
+class Stats @Inject constructor(
     @SerializedName("hp")
     var hp: Float = 0f,
     @SerializedName("atk")

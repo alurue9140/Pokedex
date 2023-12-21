@@ -13,46 +13,47 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.pokedex.data.models.Pokemon
 import com.example.pokedex.data.models.PokemonType
 
 @Composable
-fun ComponentType(firstType : PokemonType, secondType : PokemonType? = null) {
+fun ComponentType(pokemon: Pokemon) {
 
-    if (secondType == null) {
+    if (pokemon.secondType == null) {
 
         Row (modifier = Modifier
-            .background(color = firstType.color, shape = RoundedCornerShape(20.dp))
+            .background(color = pokemon.firstType!!.color, shape = RoundedCornerShape(20.dp))
             .padding(7.dp)
             .width(125.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically)
         {
-            Text(text = firstType.name, color = Color.White)
+            Text(text = pokemon.firstType!!.name, color = Color.White)
         }
 
     } else {
 
         Row {
             Row (modifier = Modifier
-                .background(color = firstType.color, shape = RoundedCornerShape(20.dp))
+                .background(color = pokemon.firstType!!.color, shape = RoundedCornerShape(20.dp))
                 .padding(7.dp)
                 .width(125.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically)
             {
-                Text(text = firstType.name, color = Color.White)
+                Text(text = pokemon.firstType!!.name, color = Color.White)
             }
 
             Spacer(modifier = Modifier.padding(15.dp))
 
             Row (modifier = Modifier
-                .background(color = secondType.color, shape = RoundedCornerShape(20.dp))
+                .background(color = pokemon.secondType!!.color, shape = RoundedCornerShape(20.dp))
                 .padding(7.dp)
                 .width(125.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically)
             {
-                Text(text = secondType.name, color = Color.White)
+                Text(text = pokemon.secondType!!.name, color = Color.White)
             }
         }
 

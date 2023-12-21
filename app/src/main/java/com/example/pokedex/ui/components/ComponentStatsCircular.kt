@@ -1,7 +1,3 @@
-package com.example.pokedex.ui.components
-
-
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,37 +13,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.pokedex.data.models.Pokemon
 import com.example.pokedex.ui.theme.ATK
 import com.example.pokedex.ui.theme.DEF
 import com.example.pokedex.ui.theme.HP
-import com.example.pokedex.ui.theme.SPD
 import com.example.pokedex.ui.theme.SA
 import com.example.pokedex.ui.theme.SD
+import com.example.pokedex.ui.theme.SPD
 
 @Composable
-fun ComponentStatsCircular(hpProgress : Float, atkProgress : Float,defProgress : Float, sAProgress : Float, sDProgress : Float, spdProgress : Float) {
-    Column (modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
-
-        Row (modifier = Modifier
-                            .fillMaxWidth(),
+fun ComponentStatsCircular(pokemon: Pokemon) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-
-            CircularProgress(HP, hpProgress, "HP")
-            CircularProgress(ATK, atkProgress, "ATK")
-            CircularProgress(DEF, defProgress, "DEF")
-
+            CircularProgress(HP, pokemon.stats.hp, "HP")
+            CircularProgress(ATK, pokemon.stats.atk, "ATK")
+            CircularProgress(DEF, pokemon.stats.def, "DEF")
         }
 
-        Row (modifier = Modifier
-                    .fillMaxWidth(),
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-
-            CircularProgress(SA, sAProgress, "SA")
-            CircularProgress(SD, sDProgress, "SD")
-            CircularProgress(SPD, spdProgress, "SPD")
-
+            CircularProgress(SA, pokemon.stats.specialAttack, "SA")
+            CircularProgress(SD, pokemon.stats.specialDefense, "SD")
+            CircularProgress(SPD, pokemon.stats.spd, "SPD")
         }
     }
 }

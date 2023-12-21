@@ -1,5 +1,6 @@
 package com.example.pokedex.ui.screens
 
+import ComponentStatsCircular
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,14 +13,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.pokedex.data.models.Pokemon
+import androidx.compose.ui.platform.LocalContext
 import com.example.pokedex.ui.components.ComponentHeader
 import com.example.pokedex.ui.components.ComponentName
-import com.example.pokedex.ui.components.ComponentStatsCircular
 import com.example.pokedex.ui.components.ComponentTitle
 import com.example.pokedex.ui.components.ComponentTopAppBar
 import com.example.pokedex.ui.components.ComponentType
 import com.example.pokedex.ui.components.ComponentWeightHeight
+import com.example.pokedex.ui.components.ImageLoaderProvider
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -33,10 +34,12 @@ fun PokemonView(pokemonViewModel: PokemonViewModel) {
 
     systemUiController.setStatusBarColor(pokemon?.firstType?.color ?: MaterialTheme.colorScheme.background)
 
+    val imageLoaderProvider = ImageLoaderProvider(LocalContext.current)
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            pokemon?.let { ComponentTopAppBar(it.firstType!!.color, it.id) }
+            pokemon?.let { ComponentTopAppBar(pokemon!!) }
         }
     ) {
         pokemon?.let {
@@ -44,19 +47,12 @@ fun PokemonView(pokemonViewModel: PokemonViewModel) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                ComponentHeader(it.firstType!!.color, it.imgStr)
-                ComponentName(it.name)
-                ComponentType(it.firstType!!, it.secondType)
-                ComponentWeightHeight(it.weight, it.height)
+                ComponentHeader(pokemon!!, imageLoaderProvider)
+                ComponentName(pokemon!!)
+                ComponentType(pokemon!!)
+                ComponentWeightHeight(pokemon!!)
                 ComponentTitle("Base Stats")
-                ComponentStatsCircular(
-                    it.stats.hp,
-                    it.stats.atk,
-                    it.stats.def,
-                    it.stats.specialAttack,
-                    it.stats.specialDefense,
-                    it.stats.spd
-                )
+                ComponentStatsCircular(pokemon!!)
             }
         }
     }

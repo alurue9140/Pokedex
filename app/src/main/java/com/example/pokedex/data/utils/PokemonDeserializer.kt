@@ -7,9 +7,12 @@ import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import dagger.hilt.android.scopes.ActivityScoped
 import java.lang.reflect.Type
+import javax.inject.Inject
 
-class PokemonDeserializer : JsonDeserializer<Pokemon> {
+@ActivityScoped
+class PokemonDeserializer @Inject constructor() : JsonDeserializer<Pokemon> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Pokemon {
         json as JsonObject
 

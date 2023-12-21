@@ -2,6 +2,8 @@ package com.example.pokedex.data.models
 
 import androidx.compose.ui.graphics.Color
 import com.example.pokedex.ui.theme.*
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
 
 enum class PokemonType(val color: Color) {

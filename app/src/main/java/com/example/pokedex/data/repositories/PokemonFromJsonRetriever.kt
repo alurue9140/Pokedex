@@ -4,12 +4,14 @@ import android.content.Context
 import com.example.pokedex.data.models.Pokemon
 import com.example.pokedex.data.utils.PokemonDeserializer
 import com.google.gson.GsonBuilder
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
+import javax.inject.Inject
 
 
-class PokemonFromJsonRetriever(private val context: Context) : PokemonRetriever {
+class PokemonFromJsonRetriever @Inject constructor( @ApplicationContext private val context: Context) : PokemonRetriever {
 
-    private val name = "ditto"
+    private val name = "eternatus-eternamax"
 
     override fun getPokemon(): Pokemon {
         val jsonTexto = getJsonData(context, "$name.json")

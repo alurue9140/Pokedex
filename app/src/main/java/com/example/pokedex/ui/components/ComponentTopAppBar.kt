@@ -16,17 +16,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.data.models.Pokemon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ComponentTopAppBar(color: Color, id: Int) {
+fun ComponentTopAppBar(pokemon: Pokemon) {
 
     TopAppBar(
         title = { Box (modifier = Modifier.fillMaxWidth()){
             Text(text = "Pokedex", color = Color.White,fontSize = 17.sp, modifier = Modifier.align(Alignment.TopStart))
-            Text(text = "#$id", color = Color.White,fontSize = 17.sp, modifier = Modifier.align(Alignment.TopEnd))
+            Text(text = "#${pokemon.id}", color = Color.White,fontSize = 17.sp, modifier = Modifier.align(Alignment.TopEnd))
         }},
-        colors = TopAppBarDefaults.mediumTopAppBarColors(color),
+        colors = TopAppBarDefaults.mediumTopAppBarColors(pokemon.firstType!!.color),
         navigationIcon = { Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Menu", tint = Color.White, modifier = Modifier.padding(10.dp)) },
     )
 }

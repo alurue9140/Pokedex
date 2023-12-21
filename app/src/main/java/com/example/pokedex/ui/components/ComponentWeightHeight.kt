@@ -16,9 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.data.models.Pokemon
 
 @Composable
-fun ComponentWeightHeight(weight: Float, height: Float) {
+fun ComponentWeightHeight(pokemon: Pokemon) {
     Row (
         modifier = Modifier
             .fillMaxWidth()
@@ -32,7 +33,7 @@ fun ComponentWeightHeight(weight: Float, height: Float) {
                 .width(110.dp),
             horizontalAlignment = Alignment.CenterHorizontally)
         {
-            Text(text = "${weight/10} KG", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.Bold)
+            Text(text = "${pokemon.weight/10} KG", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.padding(2.dp))
             Text(text = "Weight", color = Color.Gray, fontSize = 17.sp)
         }
@@ -45,7 +46,7 @@ fun ComponentWeightHeight(weight: Float, height: Float) {
                 .width(110.dp),
             horizontalAlignment = Alignment.CenterHorizontally)
         {
-            Text(text = "${height/10} M", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.Bold)
+            Text(text = "${pokemon.height/10} M", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.padding(2.dp))
             Text(text = "Height", color = Color.Gray, fontSize = 17.sp)
         }
