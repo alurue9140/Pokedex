@@ -1,4 +1,4 @@
-package com.example.pokedex.data.repositories
+package com.example.pokedex.domain.repositories
 
 import com.example.pokedex.domain.models.Pokemon
 

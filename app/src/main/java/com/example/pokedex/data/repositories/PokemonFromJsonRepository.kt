@@ -1,16 +1,17 @@
-package com.example.pokedex.domain.repositories
+package com.example.pokedex.data.repositories
 
 import android.content.Context
-import com.example.pokedex.data.repositories.PokemonRepository
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.data.utils.PokemonDeserializer
+import com.example.pokedex.domain.repositories.PokemonRepository
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
 import javax.inject.Inject
 
 
-class PokemonFromJsonRepository @Inject constructor(@ApplicationContext private val context: Context) : PokemonRepository {
+class PokemonFromJsonRepository @Inject constructor(@ApplicationContext private val context: Context) :
+    PokemonRepository {
 
     private val name = "goodra"
 

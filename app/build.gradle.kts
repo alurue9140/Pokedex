@@ -81,4 +81,7 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     ksp("com.google.dagger:hilt-compiler:$hiltVersion")
 
+    //RETROFIT
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
 }

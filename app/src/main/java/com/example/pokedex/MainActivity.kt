@@ -8,14 +8,11 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.pokedex.domain.repositories.PokemonFromJsonRepository
-import com.example.pokedex.domain.usecases.GetPokemonDetailUseCase
 import com.example.pokedex.ui.screens.PokemonView
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
 import com.example.pokedex.ui.theme.PokedexTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 
 @HiltAndroidApp
 class PokedexApp : Application()
