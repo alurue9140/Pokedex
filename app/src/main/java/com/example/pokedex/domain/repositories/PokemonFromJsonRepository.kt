@@ -1,6 +1,7 @@
-package com.example.pokedex.data.repositories
+package com.example.pokedex.domain.repositories
 
 import android.content.Context
+import com.example.pokedex.data.repositories.PokemonRepository
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.data.utils.PokemonDeserializer
 import com.google.gson.GsonBuilder
@@ -9,15 +10,15 @@ import java.io.IOException
 import javax.inject.Inject
 
 
-class PokemonFromJsonRetriever @Inject constructor( @ApplicationContext private val context: Context) : PokemonRetriever {
+class PokemonFromJsonRepository @Inject constructor(@ApplicationContext private val context: Context) : PokemonRepository {
 
     private val name = "goodra"
 
     override fun getPokemon(): Pokemon {
-        val jsonTexto = getJsonData(context, "$name.json")
+        val jsonText = getJsonData(context, "$name.json")
         val gSon = GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).create()
 
-        return gSon.fromJson(jsonTexto, Pokemon::class.java)
+        return gSon.fromJson(jsonText, Pokemon::class.java)
     }
 
     private fun getJsonData(context: Context, fileName: String): String? {
