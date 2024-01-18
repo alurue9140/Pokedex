@@ -6,17 +6,17 @@ import javax.inject.Inject
 
 @ActivityScoped
 class Stats @Inject constructor(
-    @SerializedName("hp")
+
     var hp: Float = 0f,
-    @SerializedName("atk")
+
     var atk: Float = 0f,
-    @SerializedName("def")
+
     var def: Float = 0f,
-    @SerializedName("specialAttack")
+
     var specialAttack: Float = 0f,
-    @SerializedName("specialDefense")
+
     var specialDefense: Float = 0f,
-    @SerializedName("spd")
+
     var spd: Float = 0f
 ) {
     override fun toString(): String {

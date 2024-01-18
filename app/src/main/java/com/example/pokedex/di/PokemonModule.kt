@@ -1,5 +1,6 @@
 package com.example.pokedex.di
 
+import com.example.pokedex.data.repositories.PokemonApiRepositoryImpl
 import com.example.pokedex.domain.repositories.PokemonRepository
 import com.example.pokedex.data.repositories.PokemonFromJsonRepository
 import dagger.Binds
@@ -12,7 +13,7 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class PokemonModule {
 
     @Binds
-    abstract fun bindPokemonRepository(pokemonRepository: PokemonFromJsonRepository): PokemonRepository
+    abstract fun bindPokemonRepository(pokemonRepository: PokemonApiRepositoryImpl): PokemonRepository
 
 
 
