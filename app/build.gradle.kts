@@ -81,8 +81,11 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     ksp("com.google.dagger:hilt-compiler:$hiltVersion")
 
-    //RETROFIT
+    //RETROFIT NO CAMBIAR
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.8.0")
+
+    //NAVHOST
+    implementation("androidx.navigation:navigation-compose:2.6.0-alpha04")
 
 }

@@ -11,7 +11,6 @@ import dagger.hilt.android.scopes.ActivityScoped
 import java.lang.reflect.Type
 import javax.inject.Inject
 
-@ActivityScoped
 class PokemonDeserializer: JsonDeserializer<Pokemon> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Pokemon {
         json as JsonObject

@@ -14,6 +14,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import com.example.pokedex.ui.components.ComponentHeader
 import com.example.pokedex.ui.components.ComponentName
 import com.example.pokedex.ui.components.ComponentTitle
@@ -27,7 +28,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonView(pokemonViewModel: PokemonViewModel) {
+fun PokemonView(pokemonViewModel: PokemonViewModel, navController: NavHostController) {
     val pokemon by pokemonViewModel.pokemon.observeAsState()
 
     val systemUiController = rememberSystemUiController()
@@ -39,7 +40,7 @@ fun PokemonView(pokemonViewModel: PokemonViewModel) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            pokemon?.let { ComponentTopAppBar(pokemon!!) }
+            pokemon?.let { ComponentTopAppBar(pokemon!!, navController) }
         }
     ) {
         pokemon?.let {

@@ -1,14 +1,17 @@
 package com.example.pokedex.data.sources.remote
 
 import com.example.pokedex.data.utils.PokemonDeserializer
+import com.example.pokedex.data.utils.PokemonListDeserializer
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.domain.models.PokemonList
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object PokeApi {
 
-    val gSon = GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).create()
+    val gSon = GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).
+                            registerTypeAdapter(PokemonList::class.java, PokemonListDeserializer()).create()
 
     val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")

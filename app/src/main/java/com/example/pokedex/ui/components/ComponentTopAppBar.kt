@@ -1,5 +1,6 @@
 package com.example.pokedex.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,11 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.pokedex.domain.models.Pokemon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ComponentTopAppBar(pokemon: Pokemon) {
+fun ComponentTopAppBar(pokemon: Pokemon, navController: NavHostController) {
 
     TopAppBar(
         title = { Box (modifier = Modifier.fillMaxWidth()){
@@ -28,6 +30,6 @@ fun ComponentTopAppBar(pokemon: Pokemon) {
             Text(text = "#${pokemon.id}", color = Color.White,fontSize = 17.sp, modifier = Modifier.align(Alignment.TopEnd))
         }},
         colors = TopAppBarDefaults.mediumTopAppBarColors(pokemon.firstType!!.color),
-        navigationIcon = { Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Menu", tint = Color.White, modifier = Modifier.padding(10.dp)) },
+        navigationIcon = { Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Menu", tint = Color.White, modifier = Modifier.padding(10.dp).clickable { navController.navigate("PokemonList") }) },
     )
 }

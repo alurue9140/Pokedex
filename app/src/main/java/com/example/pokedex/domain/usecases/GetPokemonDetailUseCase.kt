@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class GetPokemonDetailUseCase @Inject constructor(private val pokemonRepository: PokemonRepository) {
 
-    fun getPokemonDetail() : Pokemon {
-        return pokemonRepository.getPokemon()
+    fun getPokemonDetail(name : String) : Pokemon {
+        return pokemonRepository.getPokemon(name)
     }
 
 
