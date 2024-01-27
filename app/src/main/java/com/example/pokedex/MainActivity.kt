@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.pokedex.ui.screens.ChargingScreen
 import com.example.pokedex.ui.screens.PokemonListView
 import com.example.pokedex.ui.screens.PokemonView
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
@@ -45,9 +46,9 @@ class MainActivity : ComponentActivity() {
 
                     val navController = rememberNavController()
 
-                    NavHost(navController = navController, startDestination = "PokemonList") {
+                    NavHost(navController = navController, startDestination = "ChargingScreen") {
+                        composable("ChargingScreen"){ ChargingScreen(navController) }
                         composable("PokemonList"){ PokemonListView(pokemonListViewModel, navController) }
-                        //composable("Pokemon") {PokemonView(pokemonViewModel)}
                         composable("Pokemon/{namePokemon}", arguments = listOf(
                             navArgument("namePokemon") {type = NavType.StringType}
                         )) {backStackEntry ->

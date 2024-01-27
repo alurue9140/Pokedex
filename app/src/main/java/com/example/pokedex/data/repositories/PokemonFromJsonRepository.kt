@@ -14,8 +14,6 @@ import javax.inject.Inject
 
 class PokemonFromJsonRepository @Inject constructor(@ApplicationContext private val context: Context) : PokemonRepository {
 
-    private val name = "goodra"
-
 
     override fun getPokemon(name : String): Pokemon {
         val jsonText = getJsonData(context, "$name.json")
