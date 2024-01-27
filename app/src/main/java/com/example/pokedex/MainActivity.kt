@@ -2,6 +2,7 @@ package com.example.pokedex
 
 import android.app.Application
 import android.os.Bundle
+import android.os.StrictMode
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -37,6 +38,10 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
+
+                    StrictMode.setThreadPolicy(
+                        StrictMode.ThreadPolicy.Builder().permitAll().build()
+                    )
 
                     val navController = rememberNavController()
 

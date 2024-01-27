@@ -15,8 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PokemonViewModel @Inject constructor(private val pokemonDetail: GetPokemonDetailUseCase) : ViewModel() {
 
-    private var _pokemon = MutableLiveData<Pokemon>()
-    val pokemon: LiveData<Pokemon> = _pokemon
+    private var _pokemon = MutableLiveData<Pokemon?>()
+    val pokemon: MutableLiveData<Pokemon?> = _pokemon
 
     private var _pokemonName = ""
 
@@ -25,12 +25,12 @@ class PokemonViewModel @Inject constructor(private val pokemonDetail: GetPokemon
     }
 
     fun setPokemonNameAndGetData(name: String) {
-        _pokemonName = name
-        loadPokemon()
+        _pokemon.postValue(null)
+        loadPokemon(name)
     }
 
-    private fun loadPokemon(){
-
+    private fun loadPokemon(name : String){
+        _pokemonName = name
         viewModelScope.launch {
 
             val loadedPokemon = withContext(Dispatchers.IO) {
